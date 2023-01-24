@@ -1,42 +1,35 @@
-const select = document.querySelector('select');
-const para = document.querySelector('.weather-para');
+const output = document.querySelector('.output');
+output.innerHTML = '';
 
-select.addEventListener('change', setWeather);
+let i = 10;
 
-function setWeather() {
-    const choice = select.value;
+while (i >= 0) {
+  const para = document.createElement('p');
+  if (i === 10) {
+    para.textContent = `Countdown ${i}`;
+  } else if (i === 0) {
+    para.textContent = 'Blast off!';
+  } else {
+    para.textContent = i;
+  }
 
-    switch(choice) {
-        case 'sunny':
-            para.textContent = 'It is nice and sunny outside today. Wear shorts! Go to the beach, or the park, and get an ice cream.';
-            break;
+  output.appendChild(para);
 
-        case 'rainy':
-            para.textContent = 'Rain is falling outside; take a rain coat and an umbrella, and don\'t stay out for too long.';
-            break;
+  i--;
+}
 
-        case 'snowing':
-            para.textContent = 'The snow is coming down — it is freezing! Best to stay in with a cup of hot chocolate, or go build a snowman.';
-            break;
+const addmitted = document.querySelector('.addmitted');
+const refused = document.querySelector('.refused');
+addmitted.textContent = 'Admit: ';
+refused.textContent = 'Refused: ';
 
-        case 'overcast':
-            para.textContent = 'It isn\'t raining, but the sky is grey and gloomy; it could turn any minute, so take a rain coat just in case.';
-            break;
+const people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
 
-        default:
-            para.textContent = '';
+for (const person of people) {
+    if (person === 'Phil' || person === 'Lola') {
+        refused.textContent += `${person}, `;
+    } else {
+        
     }
 }
 
-
-const response = document.querySelector('.response');
-let season = 'summer';
-let responseText;
-
-if (season.includes('summer')) {
-    responseText = `We currently have ${season}`;
-} else {
-    responseText = `We currently have something else`;
-}
-
-response.textContent = responseText;
